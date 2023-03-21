@@ -1,7 +1,7 @@
 dbt_snowflake_demo:
   target: dev
   outputs:
-    dev:      
+    dev:
       type: snowflake
       account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"
       user: HIROKIIGETA
@@ -12,6 +12,27 @@ dbt_snowflake_demo:
       database: analytics
       warehouse: COMPUTE_WH
       schema: dbt_hiro
+      threads: 4
+      client_session_keep_alive: False
+      # query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false 
+      retry_all: False  # default: false
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"
+      user: HIROKIIGETA
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+
+
+      database: PC_DBT_DB
+      warehouse: COMPUTE_WH
+      schema: prod
       threads: 4
       client_session_keep_alive: False
       # query_tag: [anything]
