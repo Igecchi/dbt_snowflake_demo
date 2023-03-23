@@ -35,4 +35,10 @@ models:
   dbt_snowflake_demo:
     materialized: table
     staging:
-        materialized: view
+      materialized: view
+    analyses:
+      materialized: ephemeral
+    intermediate:
+      materialized: ephemeral
+    dbt_packages:
+      materialized: ephemeral

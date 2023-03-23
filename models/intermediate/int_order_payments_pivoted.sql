@@ -43,7 +43,7 @@ final as (
         case 
             when {{ payment_method }}_amount is not null then true
             else false 
-        end as had_{{payment_method}}_payment,
+        end as has_{{payment_method}}_payment,
 
         {% endfor -%}
 
